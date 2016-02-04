@@ -3,7 +3,7 @@ class DrawsController < ApplicationController
 
   def index
     @draws = getDrawsFromAPI
-    binding.pry
+    # TODO: ...
   end
 
   private

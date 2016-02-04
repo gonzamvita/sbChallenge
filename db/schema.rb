@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160204114944) do
+ActiveRecord::Schema.define(version: 20160204121008) do
 
   create_table "draws", force: :cascade do |t|
     t.datetime "created_at",         null: false
@@ -30,19 +30,45 @@ ActiveRecord::Schema.define(version: 20160204114944) do
   end
 
   create_table "games", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",                null: false
+    t.datetime "updated_at",                null: false
+    t.string   "game_name"
+    t.string   "minimum_bet"
+    t.string   "hours_before_closing_draw"
   end
 
   create_table "matches", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string   "match_1"
+    t.string   "match_2"
+    t.string   "match_3"
+    t.string   "match_4"
+    t.string   "match_5"
+    t.string   "match_6"
+    t.string   "match_7"
+    t.string   "match_8"
+    t.string   "match_9"
+    t.string   "match_10"
+    t.string   "match_11"
+    t.string   "match_12"
+    t.string   "match_13"
+    t.string   "match_14"
+    t.string   "match_15"
+    t.integer  "draw_id"
   end
 
+  add_index "matches", ["draw_id"], name: "index_matches_on_draw_id"
+
   create_table "numbers", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",    null: false
+    t.datetime "updated_at",    null: false
+    t.string   "ticket_number"
+    t.string   "amount"
+    t.integer  "draw_id"
   end
+
+  add_index "numbers", ["draw_id"], name: "index_numbers_on_draw_id"
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
